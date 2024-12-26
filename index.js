@@ -29,6 +29,9 @@ const genralRatelimit = rateLimit({
 
 app.use(genralRatelimit);
 
+// sequelize.sync({
+//   force: true,
+// });
 sequelize.sync();
 
 //Routes

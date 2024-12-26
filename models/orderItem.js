@@ -1,15 +1,15 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../db";
 
-const Cart = sequelize.define(
-  "cart",
+const OrderItem = sequelize.define(
+  "orderItem",
   {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    userId: {
+    orderId: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -20,7 +20,15 @@ const Cart = sequelize.define(
     quantity: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 1,
+    },
+    price: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+    },
+    totalPrice: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+      defaultValue: 0.0,
     },
   },
   {
@@ -28,4 +36,4 @@ const Cart = sequelize.define(
   }
 );
 
-export default Cart;
+export default OrderItem;
