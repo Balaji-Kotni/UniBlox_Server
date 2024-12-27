@@ -7,6 +7,7 @@ import morgan from "morgan";
 import rateLimit from "express-rate-limit";
 import sequelize from "./db.js";
 import { routes } from "./routes/index.js";
+import setupAssociations from "./models/associations.js";
 
 dotenv.config();
 const app = express();
@@ -34,6 +35,8 @@ app.use(genralRatelimit);
 //   force: true,
 // });
 sequelize.sync();
+
+setupAssociations();
 
 //Routes
 app.get("/", (req, res) => {
