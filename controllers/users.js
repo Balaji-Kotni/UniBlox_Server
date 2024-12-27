@@ -1,9 +1,9 @@
-import Users from "../models/users";
+import Users from "../models/users.js";
 
 export const AddUser = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
-    const user = await Users.create({ name, email, password });
+    const { name, email, password, role } = req.body;
+    const user = await Users.create({ name, email, password, role });
     res.status(201).json({ user });
   } catch (error) {
     res.status(500).json({ error: error.message });

@@ -6,6 +6,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import rateLimit from "express-rate-limit";
 import sequelize from "./db.js";
+import { routes } from "./routes/index.js";
 
 dotenv.config();
 const app = express();
@@ -38,6 +39,7 @@ sequelize.sync();
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to Uniblox Api." });
 });
+app.use("/api/v1", routes);
 
 app.use((req, res, next) => {
   next(new RequestError("Invalid route", 404));
